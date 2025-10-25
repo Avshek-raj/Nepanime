@@ -6,6 +6,7 @@ import { BsClockFill } from "react-icons/bs";
 import { MdMic, MdSubtitles } from "react-icons/md";
 import { AnimeOverview } from "../ui/AnimeOverview";
 import { AnimeEpisodes } from "../ui/AnimeEpisodes";
+import { VideoPlayer } from "../ui/VideoPlayer";
 
 const fetchAnimeDetail = async (animeId) => {
     try {
@@ -39,7 +40,10 @@ export const AnimeDetail = () => {
                         <AnimeOverview animeDetail={animeDetail} />
                     </div>
                     <div className="my-5 flex justify-between  rounded-md gap-5">
-                        <div className="w-4/5 bg-[var(--color-primary)]"></div>
+                        <div className="w-4/5 bg-[var(--color-primary)]">
+                            <VideoPlayer />
+
+                        </div>
                         <div className="w-1/5 bg-[var(--color-primary)] p-5 rounded-md">
                             <AnimeEpisodes animeId={animeDetail.id} />
                         </div>
