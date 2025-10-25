@@ -8,6 +8,9 @@ import { FaClock } from "react-icons/fa";
 import { SiDatefns, SiDatev } from "react-icons/si";
 import { MdMic, MdSubtitles } from "react-icons/md";
 import { Spotlight } from "../ui/Spotlight";
+import { Trending } from "../ui/Trending";
+import { Top10 } from "../ui/Top10";
+import { useNavigate } from "react-router-dom";
 
 const getAnime = async (endpoint) => {
     try {
@@ -33,13 +36,19 @@ export const Home = () => {
             setSpotlightIndex((prevIndex) => (prevIndex + 1) % 3);
         }, 10000);
     }, [spotlightIndex]);
-    const spotlightAnime = data ? data.data["spotlight"][spotlightIndex] : null;
+    const spotlightAnime = data ? data.data["spotlight"][spotlightIndex] : [];
+    const top10Anime = data ? data.data["top10"] : [];
+
+   
     return (<>
         {isPending ? <div>Loading...</div> :
             <div className="px-5 py-10 min-h-screen w-full flex justify-between gap-5">
-                <Spotlight spotlightAnime={spotlightAnime} />
-                <div className="w-1/4 bg-[var(--color-primary)] text-white/80 p-5">
-                    Sidebar
+                <div className="flex flex-col w-3/4 ">
+                    <Spotlight spotlightAnime={spotlightAnime} />
+                    <Trending trendingAnime={data ? data.data["trending"] : []} />
+                </div>
+                <div className="w-1/4 ">
+                    <Top10 top10Anime={top10Anime} />
                 </div>
             </div>
         }

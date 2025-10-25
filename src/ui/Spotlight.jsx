@@ -8,10 +8,9 @@ import { MdMic, MdSubtitles } from "react-icons/md";
 
 export const Spotlight = ({ spotlightAnime }) => {
     return (
-        <div className="bg-[var(--color-primary)] flex flex-col h-115 w-3/4">
+        <div className="bg-[var(--color-primary)] flex flex-col h-115">
             <div
                 className="overflow-hidden m-5 flex-1 bg-cover bg-center bg-no-repeat items-center flex"
-                // className="w-full h-screen bg-cover bg-center bg-no-repeat flex items-center justify-center"
                 style={{
                     backgroundImage: `url(${spotlightAnime["poster"]})`,
                 }}

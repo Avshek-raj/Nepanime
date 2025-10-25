@@ -6,6 +6,7 @@ import { TopAnimes } from "./pages/TopAnimes.jsx";
 import { Home } from "./pages/Home.jsx";
 import { TvSeries } from "./pages/TvSeries.jsx";
 import { useState } from "react";
+import { AnimeDetail } from "./pages/AnimeDetail.jsx";
 
 
 const App = () => {
@@ -25,12 +26,16 @@ const App = () => {
           element: <Movies/>,
         },
         {
-          path: "/tvseries",
+          path: "/tv-series",
           element: <TvSeries/>,
         },
         {
-          path: "/topanimes",
+          path: "/top-animes",
           element: <TopAnimes/>,
+        },
+        {
+          path: "/anime-detail",
+          element: <AnimeDetail/>,
         }
       ],
     }
