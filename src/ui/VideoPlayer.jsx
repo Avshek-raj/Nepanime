@@ -1,10 +1,9 @@
-// /src/ui/VideoPlayer.jsx
 import { useEffect, useRef } from "react";
 import Hls from "hls.js";
 
 export const VideoPlayer = ({
   videoUrl = "https://fxpy7.watching.onl/anime/603a7cc07fd43fa7caaf863203a6ce89/caebb7e0bd325936c9c8b6c0d5e6903d/master.m3u8",
-  subtitleUrl = "https://mgstatics.xyz/subtitle/5c6468b280a88e1c9dc396faa952b2e9/5c6468b280a88e1c9dc396faa952b2e9.vtt"
+  subtitleUrl = "https://mgstatics.xyz/subtitle/5c6468b280a88e1c9dc396faa952b2e9/5c6468b280a88e1c9dc396faa952b2e9.vtt",
 }) => {
   const videoRef = useRef(null);
 
@@ -12,23 +11,26 @@ export const VideoPlayer = ({
     if (!videoUrl) return;
 
     const video = videoRef.current;
-    const proxyUrl = `/api/proxy?url=${encodeURIComponent(videoUrl)}`;
+    const proxyUrl = `http://localhost:3001/api/proxy?url=${encodeURIComponent(videoUrl)}`;
 
+    let hls;
     if (Hls.isSupported()) {
-      const hls = new Hls();
+      hls = new Hls();
       hls.loadSource(proxyUrl);
       hls.attachMedia(video);
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
         video.play().catch(() => {});
       });
-
-      return () => {
-        hls.destroy();
-      };
+      hls.on(Hls.Events.ERROR, (e, data) => {
+        console.error("HLS error:", data);
+      });
     } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      // Safari supports HLS natively
       video.src = proxyUrl;
+      video.load();
+      video.play().catch(() => {});
     }
+
+    return () => hls && hls.destroy();
   }, [videoUrl]);
 
   return (
