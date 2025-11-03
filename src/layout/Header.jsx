@@ -20,7 +20,7 @@ export const Header = () => {
             <nav className="flex gap-8 items-center text-white/80 mr-5">
             <NavLink to="/" className="hover:text-red-500" end>Home</NavLink>
             <NavLink to="/movies" className="hover:text-red-500">Movies</NavLink>
-            <NavLink to="/tvseries" className="hover:text-red-500">Tv series</NavLink>
+            <NavLink to="/tv-series" className="hover:text-red-500">Tv series</NavLink>
             {/* <NavLink to="/topanimes" className="hover:text-red-500">Top animes</NavLink> */}
         </nav>
         </div>
