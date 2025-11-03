@@ -7,6 +7,7 @@ import { Home } from "./pages/Home.jsx";
 import { TvSeries } from "./pages/TvSeries.jsx";
 import { useState } from "react";
 import { AnimeDetail } from "./pages/AnimeDetail.jsx";
+import { ViewAllCategory } from "./ui/viewAllCategory.jsx";
 
 
 const App = () => {
@@ -20,6 +21,10 @@ const App = () => {
         {
           path: "/",
           element: <Home/>,
+        },
+        {
+          path: "/category/:categoryName",
+          element: <ViewAllCategory/>,
         },
         {
           path: "/movies",

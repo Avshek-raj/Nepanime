@@ -21,7 +21,7 @@ export const Header = () => {
             <NavLink to="/" className="hover:text-red-500" end>Home</NavLink>
             <NavLink to="/movies" className="hover:text-red-500">Movies</NavLink>
             <NavLink to="/tvseries" className="hover:text-red-500">Tv series</NavLink>
-            <NavLink to="/topanimes" className="hover:text-red-500">Top animes</NavLink>
+            {/* <NavLink to="/topanimes" className="hover:text-red-500">Top animes</NavLink> */}
         </nav>
         </div>
     </header>

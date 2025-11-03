@@ -5,14 +5,16 @@ import { BsClock, BsClockFill } from "react-icons/bs";
 import { FaClock } from "react-icons/fa";
 import { SiDatefns, SiDatev } from "react-icons/si";
 import { MdMic, MdSubtitles } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 
 export const Spotlight = ({ spotlightAnime }) => {
+    const navigate = useNavigate();
     return (
         <div className="bg-[var(--color-primary)] flex flex-col h-115">
             <div
                 className="overflow-hidden m-5 flex-1 bg-cover bg-center bg-no-repeat items-center flex"
                 style={{
-                    backgroundImage: `url(${spotlightAnime["poster"]})`,
+                    backgroundImage: `url(${spotlightAnime["banner"]})`,
                 }}
             >
                 <div id={spotlightAnime.id} className="m-5 bg-white/50 text-black/90 flex flex-col  p-5 rounded-md w-1/2">
@@ -33,25 +35,25 @@ export const Spotlight = ({ spotlightAnime }) => {
 
                         <div className="flex mx-4 items-center">
                             <BiCalendar className="w-4 h-4" />
-                            <p>{spotlightAnime.aired}</p>
+                            <p>{spotlightAnime.releaseDate}</p>
                         </div>
 
                         <p className="ml-4 bg-green-500 rounded-lg px-1">{spotlightAnime.quality}</p>
                         <span className="mx-2 bg-yellow-500 rounded-lg px-1 flex flex-row items-center">
                             <MdSubtitles className="w-4 h-4" />
-                            <p>{spotlightAnime.episodes.sub}</p>
+                            <p>{spotlightAnime.sub}</p>
                         </span>
                         <span className="bg-blue-500 rounded-lg px-1 flex flex-row items-center">
                             <MdMic className="w-4 h-4" />
-                            <p>{spotlightAnime.episodes.dub}</p>
+                            <p>{spotlightAnime.dub}</p>
                         </span>
                     </span>
                     <p className="text-sm">
-                        {spotlightAnime.synopsis.length > 340 ? spotlightAnime.synopsis.substring(0, 340) + "..." : spotlightAnime.synopsis}
+                        {spotlightAnime.description.length > 340 ? spotlightAnime.description.substring(0, 340) + "..." : spotlightAnime.description}
                     </p>
                     <div>
-                        <button className="bg-[var(--color-accent)] text-white px-4 py-2 rounded-md mt-2">Watch Now</button>
-                        <button className="bg-black/30 text-white px-4 py-2 rounded-md mt-2 ml-2">Detail </button>
+                        <button onClick={() => navigate('/anime-detail', {state:{animeId: spotlightAnime.id}})}  className="bg-[var(--color-accent)] text-white px-4 py-2 rounded-md mt-2">Watch Now</button>
+                        <button onClick={() => navigate('/anime-detail', {state:{animeId: spotlightAnime.id}})} className="bg-black/30 text-white px-4 py-2 rounded-md mt-2 ml-2">Detail </button>
                     </div>
                 </div>
             </div>

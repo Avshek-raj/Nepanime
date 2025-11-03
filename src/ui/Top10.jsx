@@ -23,7 +23,7 @@ export const Top10 = ({ top10Anime }) => {
                                 <img src={anime.poster} alt={anime.title} className="w-12 h-16 object-cover rounded-md mr-3" />
                                 <div className="flex flex-col">
                                     <h3 className="text-md font-semibold">{anime.title.length > 25 ? anime.title.substring(0, 25) + "..." : anime.title}</h3>
-                                    <p className="text-sm text-white/70">Sub: {anime.episodes.sub}</p>
+                                    <p className="text-sm text-white/70">Sub: {anime.episodes.sub}   Dub: {anime.episodes.dub}</p>
                                 </div>
                             </li>
                         )
