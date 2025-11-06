@@ -57,7 +57,7 @@ export const AnimeCategory = () => {
                 console.log(result.data)
                 return (
                 <>
-                    <div className="flex justify-between items-center mt-5">
+                    <div className="ml-3 flex justify-between items-center mt-5">
                         <h1 className="">{getCategoryInfo(idx).animeName}</h1>
                         {/* <span className="flex items-center text-center mt-1 text-[var(--color-text)] cursor-pointer hover:text-[17px] gap-3 px-2"
                             onClick={() => (navigate(`/category/${getCategoryInfo(idx).key}`, {state: {categoryInfo: getCategoryInfo(idx), animeList: result}}))}  >view all
@@ -67,10 +67,10 @@ export const AnimeCategory = () => {
 
                         </span> */}
                     </div>
-                    <div className="mr-1 overflow-x-auto py-4 scrollbar-hidden">
+                    <div className="ml-3 mr-1 overflow-x-auto py-4 scrollbar-hidden">
                         {/* scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent hover:scrollbar-thumb-gray-400 transition-all duration-300"> */}
                         <ul className="mt-2 flex gap-2">
-                            {result.data && result.data && result.data.data.results.length > 1 ? result.data.data.results.map((anime, index) => (
+                            {result.data && result.data.data && result.data.data.results.length > 1 ? result.data.data.results.map((anime, index) => (
                                 // <div className="flex">
 
                                 <li

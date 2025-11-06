@@ -30,8 +30,8 @@ export const LatestEpisodes = ({ latestEpisodes}) => {
     const episodes  = showAll ? data.data.results : data.data.results.slice(0,18);
 
     return <>
-        <h1 className="mt-10 mb-5">Latest Episodes</h1>
-        <ul className="flex flex-wrap gap-2.5 ">
+        <h1 className="ml-3  mt-10 mb-5">Latest Episodes</h1>
+        <ul className="ml-3 flex flex-wrap gap-2.5 ">
             {episodes.map((latestEpisode, index) => {
                 return (
                     <div key={latestEpisode.id} onClick={() => {navigate('/anime-detail', {state: {animeId: latestEpisode.id}})}}
