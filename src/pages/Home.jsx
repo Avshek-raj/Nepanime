@@ -15,6 +15,7 @@ import { Loading } from "../ui/Loading";
 import { LatestEpisodes } from "../ui/LatestEpisodes";
 import { EstimatedTime } from "../ui/EstimatedTime";
 import { AnimeCategory } from "../ui/AnimeCategory";
+import DevNoticeModal from "../ui/DevNoticeModel";
 
 const getAnime = async (endpoint) => {
     try {
@@ -65,9 +66,8 @@ export const Home = () => {
     const topUpcoming = hianimeQuery.data ? hianimeQuery.data.data.data["topUpcoming"] : [];
     const mostPopular = hianimeQuery.data ? hianimeQuery.data.data.data["mostPopular"] : [];
     const mostFavorite = hianimeQuery.data ? hianimeQuery.data.data.data["mostFavorite"] : [];
-
-
     return (<>
+            <DevNoticeModal/>
             <div className="px-5 py-10 min-h-screen w-full flex justify-between gap-5">
                 <div className="flex flex-col w-3/4 ">
                     <Spotlight spotlightAnime={spotlightAnime} />

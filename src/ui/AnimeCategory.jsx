@@ -70,7 +70,7 @@ export const AnimeCategory = () => {
                     <div className="mr-1 overflow-x-auto py-4 scrollbar-hidden">
                         {/* scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent hover:scrollbar-thumb-gray-400 transition-all duration-300"> */}
                         <ul className="mt-2 flex gap-2">
-                            {result.data && result.data.data.results.length > 1 ? result.data.data.results.map((anime, index) => (
+                            {result.data && result.data && result.data.data.results.length > 1 ? result.data.data.results.map((anime, index) => (
                                 // <div className="flex">
 
                                 <li
