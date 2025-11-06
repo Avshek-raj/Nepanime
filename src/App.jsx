@@ -7,7 +7,7 @@ import { Home } from "./pages/Home.jsx";
 import { TvSeries } from "./pages/TvSeries.jsx";
 import { useState } from "react";
 import { AnimeDetail } from "./pages/AnimeDetail.jsx";
-import { ViewAllCategory } from "./ui/viewAllCategory.jsx";
+import { ViewAllCategory } from "./ui/ViewAllCategory.jsx";
 
 
 const App = () => {
