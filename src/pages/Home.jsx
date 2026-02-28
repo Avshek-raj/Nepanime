@@ -38,7 +38,7 @@ export const Home = () => {
         },
         {
             queryKey: ['latest-episode'],
-            queryFn: async () => getAnime('recent-episodes')
+            queryFn: async () => getAnime('recently-updated')
         },
         {
             queryKey: ['hianime'],
