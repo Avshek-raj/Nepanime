@@ -27,24 +27,24 @@ export const LatestEpisodes = ({ latestEpisodes}) => {
 
     if (isPending) return <Loading/>;
     if (error) return <p>Error loading episodes.</p>;
-    const episodes  = showAll ? data.data.results : data.data.results.slice(0,18);
+    const episodes  = showAll ? data.data.results : data.data.results.slice(0,15);
 
     return <>
-        <h1 className="ml-3  mt-10 mb-5">Latest Episodes</h1>
-        <ul className="ml-3 flex flex-wrap gap-7 ">
+        <h1 className="mx-2 sm:mx-3 mt-8 sm:mt-10 mb-5 text-lg sm:text-xl">Latest Episodes</h1>
+        <ul className="mx-2 sm:mx-3 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
             {episodes.map((latestEpisode, index) => {
                 return (
                     <div key={latestEpisode.id} onClick={() => {navigate('/anime-detail', {state: {animeId: latestEpisode.id}})}}
-                    className="bg-[var(--color-primary)] w-40 h-70 cursor-pointer hover:scale-105 flex flex-col">
-                        <img className="h-59" src={latestEpisode.image}></img>
-                        <span className="text-center text-sm mt-1">
-                            {latestEpisode.title.length > 20 ? latestEpisode.title.substring(0, 20) + "..." : latestEpisode.title}
+                    className="bg-[var(--color-primary)] cursor-pointer hover:scale-105 transition-transform duration-200 flex flex-col rounded-lg overflow-hidden">
+                        <img className="w-full aspect-[3/4] object-cover" src={latestEpisode.image}></img>
+                        <span className="text-center text-xs sm:text-sm mt-1 px-1 line-clamp-2">
+                            {latestEpisode.title}
                         </span>
-                        <div className="flex justify-between mx-2  text-xs">
-                            <span className="text-left disabled:text-gray-500" >
+                        <div className="flex justify-between mx-1 px-1 text-xs">
+                            <span className="text-left text-white/70" >
                                 {latestEpisode.type}
                             </span>
-                            <span className="text-right ">
+                            <span className="text-right text-white/70">
                                 Ep: {latestEpisode.sub}
                             </span>
                         </div>

@@ -57,8 +57,8 @@ export const AnimeCategory = () => {
                 console.log(result.data)
                 return (
                 <>
-                    <div className="ml-3 flex justify-between items-center mt-5">
-                        <h1 className="">{getCategoryInfo(idx).animeName}</h1>
+                    <div className="ml-2 sm:ml-3 flex justify-between items-center mt-5">
+                        <h1 className="text-lg sm:text-xl">{getCategoryInfo(idx).animeName}</h1>
                         {/* <span className="flex items-center text-center mt-1 text-[var(--color-text)] cursor-pointer hover:text-[17px] gap-3 px-2"
                             onClick={() => (navigate(`/category/${getCategoryInfo(idx).key}`, {state: {categoryInfo: getCategoryInfo(idx), animeList: result}}))}  >view all
                             <div className=" bg-[var(--color-primary)] p-2.5">
@@ -67,26 +67,25 @@ export const AnimeCategory = () => {
 
                         </span> */}
                     </div>
-                    <div className="ml-3 mr-1 overflow-x-auto py-4 scrollbar-hidden">
-                        {/* scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent hover:scrollbar-thumb-gray-400 transition-all duration-300"> */}
-                        <ul className="mt-2 flex gap-2">
+                    <div className="mx-2 sm:mx-3 overflow-x-auto py-3 sm:py-4 scrollbar-hidden">
+                        <ul className="mt-2 flex gap-2 sm:gap-3">
                             {result.data && result.data.data && result.data.data.results.length > 1 ? result.data.data.results.map((anime, index) => (
                                 // <div className="flex">
 
                                 <li
                                     key={anime.id}
-                                    className="cursor-pointer hover:scale-101 transition-scale duration-200 p-1 min-w-[171px] bg-[var(--color-primary)] rounded-lg hover:bg-[var(--color-secondary)] transition-colors duration-300 shadow-md"
+                                    className="cursor-pointer hover:scale-105 transition-scale duration-200 p-1 min-w-[120px] sm:min-w-[150px] md:min-w-[171px] bg-[var(--color-primary)] rounded-lg hover:bg-[var(--color-secondary)] transition-colors duration-300 shadow-md"
                                 >
                                     <div onClick={() => navigate('/anime-detail', { state: { animeId: anime.id } })}>
                                         <img
                                             src={anime.image}
                                             alt={anime.title}
-                                            className="w-auto h-60 object-cover rounded-t-lg"
+                                            className="w-full h-32 sm:h-48 md:h-60 object-cover rounded-t-lg"
                                         />
-                                        <div className="p-3 text-center">
-                                            <h2 className="text-xs font-semibold text-white/90">
-                                                {anime.title.length > 39
-                                                    ? anime.title.substring(0, 39) + "..."
+                                        <div className="p-2 text-center">
+                                            <h2 className="text-xs sm:text-sm font-semibold text-white/90">
+                                                {anime.title.length > 25
+                                                    ? anime.title.substring(0, 25) + "..."
                                                     : anime.title}
                                             </h2>
                                             {/* <p className="text-sm text-white/70">Type: {anime.type}</p>

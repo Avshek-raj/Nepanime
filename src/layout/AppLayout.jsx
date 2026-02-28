@@ -5,7 +5,7 @@ import { Footer } from "./Footer"
 export const AppLayout = () => {
     return (
         <>
-            <div className="flex flex-col h-screen w-full justify-between">
+            <div className="flex flex-col min-h-screen w-full justify-between">
                 <div>
                     <Header />
                 <Outlet />

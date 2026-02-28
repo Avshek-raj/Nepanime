@@ -174,71 +174,71 @@ const VideoPlayer = ({ videoData }) => {
           controls={false}
         />
 
-          {isLoading && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70">
-              <div className="text-white text-sm sm:text-lg">Loading video...</div>
-            </div>
-          )}
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-70">
+            <div className="text-white text-sm sm:text-lg">Loading video...</div>
+          </div>
+        )}
 
-          {error && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75">
-              <div className="text-red-400 text-sm sm:text-lg text-center px-4">{error}</div>
-            </div>
-          )}
+        {error && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-75">
+            <div className="text-red-400 text-sm sm:text-lg text-center px-4">{error}</div>
+          </div>
+        )}
 
-          {!isLoading && !error && (
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2 sm:p-4">
-              {/* Progress Bar */}
-              <div className="mb-2 sm:mb-3">
-                <input
-                  type="range"
-                  min="0"
-                  max={duration || 0}
-                  value={currentTime}
-                  onChange={handleSeek}
-                  className="w-full h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer"
-                  style={{
-                    background: `linear-gradient(to right, #9333ea 0%, #9333ea ${
-                      (currentTime / duration) * 100
-                    }%, #4b5563 ${(currentTime / duration) * 100}%, #4b5563 100%)`,
-                  }}
-                />
-                <div className="flex justify-between text-white text-xs sm:text-sm mt-1">
-                  <span>{formatTime(currentTime)}</span>
-                  <span>{formatTime(duration)}</span>
-                </div>
-              </div>
-
-              {/* Controls */}
-              <div className="flex items-center gap-2 sm:gap-4">
-                <button onClick={togglePlay} className="text-white hover:text-purple-400 text-lg sm:text-xl">
-                  {isPlaying ? <FaPause /> : <FaPlay />}
-                </button>
-
-                <button onClick={toggleMute} className="text-white hover:text-purple-400 text-lg sm:text-xl">
-                  {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
-                </button>
-
-                <input
-                  type="range"
-                  min="0"
-                  max="1"
-                  step="0.01"
-                  value={isMuted ? 0 : volume}
-                  onChange={handleVolumeChange}
-                  className="w-16 sm:w-24 h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer"
-                />
-
-                <div className="ml-auto">
-                  <button onClick={toggleFullscreen} className="text-white hover:text-purple-400 text-lg sm:text-xl">
-                    <FaExpand />
-                  </button>
-                </div>
+        {!isLoading && !error && (
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-2 sm:p-4">
+            {/* Progress Bar */}
+            <div className="mb-2 sm:mb-3">
+              <input
+                type="range"
+                min="0"
+                max={duration || 0}
+                value={currentTime}
+                onChange={handleSeek}
+                className="w-full h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer"
+                style={{
+                  background: `linear-gradient(to right, #9333ea 0%, #9333ea ${
+                    (currentTime / duration) * 100
+                  }%, #4b5563 ${(currentTime / duration) * 100}%, #4b5563 100%)`,
+                }}
+              />
+              <div className="flex justify-between text-white text-xs sm:text-sm mt-1">
+                <span>{formatTime(currentTime)}</span>
+                <span>{formatTime(duration)}</span>
               </div>
             </div>
-          )}
-        </div>
+
+            {/* Controls */}
+            <div className="flex items-center gap-2 sm:gap-4">
+              <button onClick={togglePlay} className="text-white hover:text-purple-400 text-lg sm:text-xl">
+                {isPlaying ? <FaPause /> : <FaPlay />}
+              </button>
+
+              <button onClick={toggleMute} className="text-white hover:text-purple-400 text-lg sm:text-xl">
+                {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+              </button>
+
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={isMuted ? 0 : volume}
+                onChange={handleVolumeChange}
+                className="w-16 sm:w-24 h-1 bg-gray-600 rounded-lg appearance-none cursor-pointer"
+              />
+
+              <div className="ml-auto">
+                <button onClick={toggleFullscreen} className="text-white hover:text-purple-400 text-lg sm:text-xl">
+                  <FaExpand />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
+    </div>
   );
 };
 

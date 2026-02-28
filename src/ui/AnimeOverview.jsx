@@ -5,59 +5,39 @@ import { MdMic, MdSubtitles } from "react-icons/md";
 export const AnimeOverview = ({ animeDetail }) => {
     return (
         <>
-            <div className="w-1/6">
-                <img src={animeDetail.image} alt={animeDetail.title} className="w-auto h-auto rounded-md" />
-            </div>
-            <div className="w-5/6 gap-4 px-5">
-                <h1 className="text-4xl font-bold ">{animeDetail.title}</h1>
-                <div className="mt-5 flex items-center">
-                    {animeDetail.genres.map((genre, index) => (
-                        <span key={index} className="mx-1 bg-[var(--color-secondary)] px-3 rounded-lg px-1">{genre}</span>
-                    ))}
+            <div className="flex flex-col md:flex-row gap-4 md:gap-5">
+                <div className="w-full md:w-1/6 flex-shrink-0">
+                    <img src={animeDetail.image} alt={animeDetail.title} className="w-full md:w-auto h-auto rounded-md" />
                 </div>
-                <span className="flex items-center my-5">
-                    <div className="flex mr-4">
-                        <BiPlay className="w-6 h-6" />
-                        <p className="">{animeDetail.type}</p>
+                <div className="w-full md:w-5/6 gap-4">
+                    <h1 className="text-2xl md:text-4xl font-bold ">{animeDetail.title}</h1>
+                    <div className="mt-3 md:mt-5 flex flex-wrap items-center gap-2">
+                        {animeDetail.genres.map((genre, index) => (
+                            <span key={index} className="bg-[var(--color-secondary)] px-2 md:px-3 rounded-lg text-xs md:text-sm">{genre}</span>
+                        ))}
                     </div>
-                    {/* <div className="flex mr-4 bg-green-500 rounded-lg px-2">
-                        <p className="">MAL : {animeDetail.MAL_score == "?" || !animeDetail.MAL_score ? "0.0" : animeDetail.MAL_score}</p>
-                    </div> */}
-                    {/* <div className="flex mx-4 items-center">
-                        <BsClockFill className="w-4 h-4" />
-                        <p className="m-1">{animeDetail.duration}</p>
-                    </div> */}
+                    <span className="flex flex-wrap items-center gap-2 md:gap-4 my-3 md:my-5 text-xs md:text-base">
+                        <div className="flex items-center">
+                            <BiPlay className="w-4 md:w-6 h-4 md:h-6" />
+                            <p className="ml-1">{animeDetail.type}</p>
+                        </div>
+                        <div className="flex items-center">
+                            <BiCalendar className="w-4 md:w-4 h-4 md:h-4" />
+                            <p className="ml-1">{animeDetail.season}</p>
+                        </div>
 
-                    <div className="flex mx-4 items-center">
-                        <BiCalendar className="w-4 h-4" />
-                        <p className="m-1">{animeDetail.season}</p>
-                        {/* <p className="m-3">-</p>
-                        <BiCalendar className="w-4 h-4" />
-                        <p className="m-1" >{animeDetail.aired.to ? animeDetail.aired.to : "-----"}</p>
-                        <p className="m-5">{animeDetail.status}</p> */}
-
-                    </div>
-
-                    {/* <p className="ml-4 bg-green-500 rounded-lg px-1">{animeDetail.quality}</p> */}
-
-                    <span className="gap-1 mx-2 bg-yellow-500 rounded-lg px-1 flex flex-row items-center">
-                        <MdSubtitles className="w-4 h-4" />
-                        <p>{animeDetail.hasSub ? 'sub': ""}</p>
+                        <span className="flex items-center bg-yellow-500 rounded-lg px-2 md:px-1">
+                            <MdSubtitles className="w-3 md:w-4 h-3 md:h-4" />
+                            <p className="ml-1 text-xs">{animeDetail.hasSub ? 'sub': ""}</p>
+                        </span>
+                        <span className="flex items-center bg-blue-500 rounded-lg px-2 md:px-1">
+                            <MdMic className="w-3 md:w-4 h-3 md:h-4" />
+                            <p className="ml-1 text-xs">{animeDetail.hasDub? 'dub': ""}</p>
+                        </span>
                     </span>
-                    <span className="gap-1 bg-blue-500 rounded-lg px-1 flex flex-row items-center">
-                        <MdMic className="w-4 h-4" />
-                        <p>{animeDetail.hasDub? 'dub': ""}</p>
-                    </span>
-                    {/* <span className="mx-2 bg-red-500 rounded-lg px-1 flex flex-row items-center">
-                        <p>{animeDetail.is18Plus ? "18+" : ""}</p>
-                    </span> */}
-                </span>
-                <p className="font-bold">Overview</p>
-                <p className="">{animeDetail.description}</p>
-                {/* <p className="mt-5">Rating: {animeDetail.rating}</p> */}
-                {/* <p className="">Premiered: {animeDetail.premiered}</p> */}
-                {/* <p className="">Studios: {animeDetail.studios}</p>
-                <p className="">Producers: {animeDetail.producers}</p> */}
+                    <p className="font-bold text-sm md:text-base mt-2">Overview</p>
+                    <p className="text-xs md:text-sm leading-relaxed">{animeDetail.description}</p>
+                </div>
             </div>
         </>
     );

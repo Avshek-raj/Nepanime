@@ -20,16 +20,19 @@ export const AnimeEpisodes = ({ episodes, episodeIdToPlay, setEpisodeIdToPlay })
     return (
         <>
             <div className="">
-                <span className="bg-[var(--color-secondary)] pr-10 pl-5 inline-block [clip-path:polygon(0_0,80%_0,100%_100%,0_100%)]">
-                    <h2 className="text-red-500/70 text-2xl font-bold">Episodes</h2>
+                <span className="bg-[var(--color-secondary)] px-3 md:px-5 inline-block rounded">
+                    <h2 className="text-red-500/70 text-lg md:text-2xl font-bold">Episodes</h2>
                 </span>
-                <span>{episodes.length}</span>
-                <div className="bg-[var(--color-secondary)] p-5 rounded-md h-[565px] overflow-y-auto ">
+                <span className="ml-2 text-xs md:text-base">{episodes.length}</span>
+                <div className="bg-[var(--color-secondary)] p-3 md:p-5 rounded-md h-[400px] md:h-[565px] overflow-y-auto mt-2">
                     <ul className="divide-y divide-[var(--color-text)]">
                         {episodes.map((episode) => (
-                            <li key={episode.id} className="mb-2 p-2  hover:bg-[var(--color-primary)] transition-colors duration-300 cursor-pointer" onClick={() => setEpisodeIdToPlay(episode.id)}>
+                            <li key={episode.id} className="mb-1 p-2 text-xs md:text-sm hover:bg-[var(--color-primary)] transition-colors duration-300 cursor-pointer" onClick={() => {
+                                setEpisodeIdToPlay(episode.id);
+                                window.scrollTo(0, 0);
+                            }}>
                                 <span className="text-red-500">{episode.number}. </span>
-                                <span>{episode.title}</span>
+                                <span className="line-clamp-2">{episode.title}</span>
                             </li>
                         ))}
                     </ul>

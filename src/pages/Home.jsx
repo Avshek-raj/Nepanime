@@ -68,20 +68,14 @@ export const Home = () => {
     const mostFavorite = hianimeQuery.data ? hianimeQuery.data.data.data["mostFavorite"] : [];
     return (<>
             <DevNoticeModal/>
-            <div className="px-5 py-10 min-h-screen w-full flex justify-between gap-5">
-                <div className="flex flex-col w-3/4 ">
+            <div className="px-2 sm:px-5 py-5 sm:py-10 min-h-screen w-full flex flex-col lg:flex-row justify-between gap-5">
+                <div className="flex flex-col lg:w-3/4 w-full">
                     <Spotlight spotlightAnime={spotlightAnime} />
                     <Trending trendingAnime={trendingAnime}/>
                     <LatestEpisodes latestEpisodes={latestEpisodeQuery} />
                     <AnimeCategory />
-                    {/* <h1 className="mt-10">Top Upcoming</h1>
-                    <AnimeCategory animeList={topUpcoming}/>
-                    <h1 className="mt-10">Most Popular</h1>
-                    <AnimeCategory animeList={mostPopular}/>
-                    <h1 className="mt-10">Most favourite</h1>
-                    <AnimeCategory animeList={mostFavorite}/> */}
                 </div>
-                <div className="w-1/4 ">
+                <div className="lg:w-1/4 w-full ">
                     <Top10 top10Anime={top10Anime} />
                     <EstimatedTime/>
                 </div>

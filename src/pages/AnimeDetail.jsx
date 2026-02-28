@@ -36,6 +36,11 @@ export const AnimeDetail = () => {
         queryFn: async () => fetchAnime(`watch/${episodeIdToPlay}`),
         enabled: !!episodeIdToPlay // only fetch when episodeIdToPlay is set
     });
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [episodeIdToPlay]);
+    
     if (isPending) {
         return <Loading />;
     }
@@ -44,19 +49,15 @@ export const AnimeDetail = () => {
     console.log(videoData);
     return (
         <>
-            <div className="w-full min-h-screen flex flex-col p-10">
-                <div className="p-5 flex justify-between bg-[var(--color-primary)] rounded-md ">
+            <div className="w-full min-h-screen flex flex-col p-2 sm:p-5 lg:p-10">
+                <div className="p-3 md:p-5 flex bg-[var(--color-primary)] rounded-md">
                     <AnimeOverview animeDetail={animeDetail} />
                 </div>
-                <div className="my-5 flex justify-between  rounded-md gap-5">
-                    <div className="w-4/5 bg-[var(--color-primary)]">
+                <div className="my-3 md:my-5 flex flex-col lg:flex-row rounded-md gap-3 md:gap-5">
+                    <div className="w-full lg:w-4/5 bg-[var(--color-primary)] rounded-md overflow-hidden">
                         {videoData ? <VideoPlayer videoData={videoData.data}/> : <></>}
-
-
-                        {/* <SimpleVideoPlayer/> */}
-
                     </div>
-                    <div className="w-1/5 bg-[var(--color-primary)] p-5 rounded-md">
+                    <div className="w-full lg:w-1/5 bg-[var(--color-primary)] p-3 md:p-5 rounded-md">
                         <AnimeEpisodes episodes={animeDetail.episodes} episodeIdToPlay={episodeIdToPlay} setEpisodeIdToPlay={setEpisodeIdToPlay} />
                     </div>
                 </div>
