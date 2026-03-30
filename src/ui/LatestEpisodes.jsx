@@ -13,7 +13,7 @@ export const LatestEpisodes = ({ latestEpisodes}) => {
 
     const {data, isPending, error} = useQuery({
         queryKey: ['latest-episodes', currentPage],
-        queryFn: () => fetchAnime(`recently-updated?page=${currentPage}`),
+        queryFn: () => fetchAnime(`recent-episodes?page=${currentPage}`),
         initialData: latestEpisodes,
     })
 

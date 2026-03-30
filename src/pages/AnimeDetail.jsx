@@ -8,6 +8,8 @@ import { AnimeOverview } from "../ui/AnimeOverview";
 import { AnimeEpisodes } from "../ui/AnimeEpisodes";
 import VideoPlayer from "../ui/VideoPlayer";
 import { Loading } from "../ui/Loading";
+import { RelatedAnime } from "../ui/RelatedAnime";
+import { SeasonsList } from "../ui/SeasonsList";
 import { useEffect, useState } from "react";
 
 const fetchAnimeDetail = async (animeId) => {
@@ -45,6 +47,9 @@ export const AnimeDetail = () => {
         return <Loading />;
     }
     const animeDetail = data ? data.data : [];
+    const recommendations = animeDetail.recommendations || [];
+    const seasons = animeDetail.seasons || [];
+    
     console.log(data);
     console.log(videoData);
     return (
@@ -61,6 +66,20 @@ export const AnimeDetail = () => {
                         <AnimeEpisodes episodes={animeDetail.episodes} episodeIdToPlay={episodeIdToPlay} setEpisodeIdToPlay={setEpisodeIdToPlay} />
                     </div>
                 </div>
+
+                {/* Seasons Section */}
+                {seasons && seasons.length > 0 && (
+                    <div className="bg-[var(--color-primary)] p-3 md:p-5 rounded-md">
+                        <SeasonsList seasons={seasons} />
+                    </div>
+                )}
+
+                {/* Related Anime Section */}
+                {recommendations && recommendations.length > 0 && (
+                    <div className="bg-[var(--color-primary)] p-3 md:p-5 rounded-md">
+                        <RelatedAnime recommendations={recommendations} />
+                    </div>
+                )}
             </div>
         </>
     )

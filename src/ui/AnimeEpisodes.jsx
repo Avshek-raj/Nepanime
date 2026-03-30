@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useQueries, useQuery } from "@tanstack/react-query";
 import { fetchAnime } from "../api/api";
 import { Loading } from "./Loading";
@@ -16,7 +17,12 @@ const fetchEpisodes = async (animeId) => {
     }
 }
 export const AnimeEpisodes = ({ episodes, episodeIdToPlay, setEpisodeIdToPlay }) => {
-    setEpisodeIdToPlay(episodes[0].id);
+    // Set first episode as default only once
+    useEffect(() => {
+        if (episodes && episodes.length > 0 && !episodeIdToPlay) {
+            setEpisodeIdToPlay(episodes[0].id);
+        }
+    }, [episodes, episodeIdToPlay, setEpisodeIdToPlay]);
     return (
         <>
             <div className="">

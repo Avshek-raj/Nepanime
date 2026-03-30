@@ -8,6 +8,8 @@ import { TvSeries } from "./pages/TvSeries.jsx";
 import { useState } from "react";
 import { AnimeDetail } from "./pages/AnimeDetail.jsx";
 import { ViewAllCategory } from "./ui/ViewAllCategory.jsx";
+import { SearchResults } from "./pages/SearchResults.jsx";
+import { AnimeSearch } from "./pages/AnimeSearch.jsx";
 
 
 const App = () => {
@@ -25,6 +27,14 @@ const App = () => {
         {
           path: "/category/:categoryName",
           element: <ViewAllCategory/>,
+        },
+        {
+          path: "/search",
+          element: <SearchResults/>,
+        },
+        {
+          path: "/anime/:keyword",
+          element: <AnimeSearch/>,
         },
         {
           path: "/movies",

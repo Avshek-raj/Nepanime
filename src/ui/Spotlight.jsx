@@ -9,13 +9,19 @@ import { useNavigate } from 'react-router-dom';
 
 export const Spotlight = ({ spotlightAnime }) => {
     const navigate = useNavigate();
+    
+    const handleSpotlightClick = () => {
+        navigate('/anime-detail', { state: { animeId: spotlightAnime.id } });
+    };
+
     return (
         <div className="bg-[var(--color-primary)] flex flex-col min-h-[400px] sm:min-h-[500px] md:min-h-[600px]">
             <div
-                className="overflow-hidden m-2 sm:m-5 flex-1 bg-cover bg-center bg-no-repeat items-center flex"
+                className="overflow-hidden m-2 sm:m-5 flex-1 bg-cover bg-center bg-no-repeat items-center flex cursor-pointer hover:opacity-90 transition-opacity duration-300"
                 style={{
                     backgroundImage: `url(${spotlightAnime["banner"]})`,
                 }}
+                onClick={handleSpotlightClick}
             >
                 <div id={spotlightAnime.id} className="m-2 sm:m-5 bg-white/50 text-black/90 flex flex-col p-3 sm:p-5 rounded-md w-full sm:w-4/5 md:w-1/2">
                     <div className='flex'>

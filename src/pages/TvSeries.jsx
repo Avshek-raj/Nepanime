@@ -21,5 +21,5 @@ export const TvSeries = () => {
     if (movies.isPending)
         return <Loading />
 
-    return <Browse page='Tv series' result={movies} currentPage={currentPage} setCurrentPage={setCurrentPage}/>;
+    return <Browse page='Tv series' result={movies} currentPage={currentPage} setCurrentPage={setCurrentPage} typeFilter="tv" />;
 }

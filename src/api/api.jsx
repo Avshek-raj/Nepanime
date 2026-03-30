@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const consumetHianimeApi = axios.create({
   // baseURL: "https://nepavshek.onrender.com/anime/zoro/",
-  baseURL: "https://nepanime-anime.vercel.app/anime/hianime/",
+  baseURL: "https://nepanime-anime.vercel.app/anime/animekai/",
   headers: {
     "Content-Type": "application/json",
   },
