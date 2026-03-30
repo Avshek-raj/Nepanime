@@ -51,8 +51,36 @@ const VideoPlayer = ({ videoData }) => {
 
   // Setup video when videoData changes
   useEffect(() => {
-    if (!videoData?.sources?.[0]?.url) {
-      setError("No video source available");
+    if (!videoData) {
+      setError("No video data provided");
+      return;
+    }
+
+    // Handle different data structures from API
+    let sources = [];
+    let subtitles = [];
+
+    // Try to extract sources from different possible formats
+    if (videoData.sources && Array.isArray(videoData.sources)) {
+      sources = videoData.sources;
+    } else if (videoData.source && typeof videoData.source === 'string') {
+      sources = [{ url: videoData.source, quality: 'default' }];
+    } else if (videoData.url && typeof videoData.url === 'string') {
+      sources = [{ url: videoData.url, quality: 'default' }];
+    } else if (videoData.sources && typeof videoData.sources === 'string') {
+      sources = [{ url: videoData.sources, quality: 'default' }];
+    }
+
+    // Extract subtitles from different possible formats
+    if (videoData.subtitles && Array.isArray(videoData.subtitles)) {
+      subtitles = videoData.subtitles;
+    } else if (videoData.tracks && Array.isArray(videoData.tracks)) {
+      subtitles = videoData.tracks;
+    }
+
+    if (!sources || sources.length === 0 || !sources[0].url) {
+      console.error("Video data structure:", videoData);
+      setError("No valid video source found. Please check the endpoint response.");
       return;
     }
 
@@ -79,8 +107,8 @@ const VideoPlayer = ({ videoData }) => {
       video.innerHTML = "";
 
       // Setup subtitles
-      if (videoData.subtitles && Array.isArray(videoData.subtitles)) {
-        const langSubs = videoData.subtitles.filter(
+      if (subtitles.length > 0) {
+        const langSubs = subtitles.filter(
           (s) => s.lang && s.lang.toLowerCase() !== "thumbnails"
         );
         setSubtitles(langSubs);
@@ -88,7 +116,7 @@ const VideoPlayer = ({ videoData }) => {
         setSubtitles([]);
       }
 
-      const videoUrl = videoData.sources[0].url;
+      const videoUrl = sources[0].url;
 
       // Initialize HLS
       if (window.Hls && window.Hls.isSupported()) {

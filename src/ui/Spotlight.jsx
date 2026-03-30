@@ -7,7 +7,7 @@ import { SiDatefns, SiDatev } from "react-icons/si";
 import { MdMic, MdSubtitles } from "react-icons/md";
 import { useNavigate } from 'react-router-dom';
 
-export const Spotlight = ({ spotlightAnime }) => {
+export const Spotlight = ({ spotlightAnime, spotlightIndex }) => {
     const navigate = useNavigate();
     
     const handleSpotlightClick = () => {
@@ -25,7 +25,7 @@ export const Spotlight = ({ spotlightAnime }) => {
             >
                 <div id={spotlightAnime.id} className="m-2 sm:m-5 bg-white/50 text-black/90 flex flex-col p-3 sm:p-5 rounded-md w-full sm:w-4/5 md:w-1/2">
                     <div className='flex'>
-                        <p className="text bg-red-500 flex flex-row rounded-xl px-2 mr-2">#{spotlightAnime.rank} </p>
+                        <p className="text bg-red-500 flex flex-row rounded-xl px-2 mr-2">#{spotlightIndex + 1}</p>
                         <p>spotlight</p>
                     </div>
                     <h1 className="text-lg sm:text-2xl font-bold mb-2">{spotlightAnime.title.length > 50 ? spotlightAnime.title.substring(0, 50) + "..." : spotlightAnime.title}</h1>

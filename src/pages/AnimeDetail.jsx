@@ -60,7 +60,22 @@ export const AnimeDetail = () => {
                 </div>
                 <div className="my-3 md:my-5 flex flex-col lg:flex-row rounded-md gap-3 md:gap-5">
                     <div className="w-full lg:w-4/5 bg-[var(--color-primary)] rounded-md overflow-hidden">
-                        {videoData ? <VideoPlayer videoData={videoData.data}/> : <></>}
+                        {isVideoLoading ? (
+                            <div className="flex items-center justify-center w-full h-full min-h-[400px] bg-black rounded-lg">
+                                <div className="text-center">
+                                    <div className="inline-block mb-4">
+                                        <div className="w-10 h-10 border-4 border-purple-600 border-t-transparent rounded-full animate-spin"></div>
+                                    </div>
+                                    <p className="text-white text-sm">Loading video...</p>
+                                </div>
+                            </div>
+                        ) : videoData ? (
+                            <VideoPlayer videoData={videoData.data}/>
+                        ) : (
+                            <div className="flex items-center justify-center w-full min-h-[400px] bg-black/50 rounded-lg">
+                                <p className="text-white/70">Select an episode to play</p>
+                            </div>
+                        )}
                     </div>
                     <div className="w-full lg:w-1/5 bg-[var(--color-primary)] p-3 md:p-5 rounded-md">
                         <AnimeEpisodes episodes={animeDetail.episodes} episodeIdToPlay={episodeIdToPlay} setEpisodeIdToPlay={setEpisodeIdToPlay} />

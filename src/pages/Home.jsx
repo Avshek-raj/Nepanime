@@ -113,7 +113,7 @@ export const Home = () => {
                         >
                             <BiLeftArrow className="w-6 h-6" />
                         </button>
-                        <Spotlight spotlightAnime={spotlightAnime} />
+                        <Spotlight spotlightAnime={spotlightAnime} spotlightIndex={spotlightIndex} />
                         <button 
                             onClick={handleNextSpotlight}
                             className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors duration-200"
